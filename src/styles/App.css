@@ -1,0 +1,18 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+#mainScreen{
+  background-color: #012a36;
+  background: url("../assets/bg-weather.png") center center no-repeat;
+  background-size: cover;
+  font-family: Roboto;
+  color: #FFF;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+
+}

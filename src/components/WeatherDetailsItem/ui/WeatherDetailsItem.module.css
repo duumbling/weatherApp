@@ -1,0 +1,33 @@
+* {
+  font-family: Roboto;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.detailsList__item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.item__name {
+  color: rgba(255, 255, 255, 0.70);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.item__info {
+  display: flex;
+  justify-content: space-between;
+  width: 270px;
+}
+
+.info__value {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
