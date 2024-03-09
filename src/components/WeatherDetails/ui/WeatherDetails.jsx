@@ -1,44 +1,56 @@
+import { useEffect, useState } from 'react';
 import { WeatherDetailsItem } from '../../WeatherDetailsItem';
 import cls from "./WeatherDetails.module.css"
 
-export function WeatherDetails() {
+export function WeatherDetails({weatherData}) {
 
-  const data = [
-    {
-      name: "Temp max",
-      value: '19°'
-    },
-    {
-      name: "Temp min",
-      value: '15°'
-    },
-    {
-      name: "Humadity",
-      value: '58%'
-    },
-    {
-      name: "Cloudy",
-      value: '86&'
-    },
-    {
-      name: "Wind",
-      value: '5km/h'
+  const [WeatherDetailsData, setWeatherDetailsData] = useState([])
+  const [currentWeatherDescription, setCurrentWeatherDescription] = useState('')
+
+  useEffect(()=>{
+    let max = Math.max(Math.floor(Number(weatherData?.main?.temp_max)), Math.floor(weatherData?.main?.temp_min))
+    let min = Math.min(Math.floor(Number(weatherData?.main?.temp_max)), Math.floor(weatherData?.main?.temp_min))
+    const newData = [
+      { 
+        name: "Минимальная температура",
+        value: `${min || 0}°`
+      },
+      {
+        name: "Максимальная температура",
+        value: `${max || 0}°`
+      },
+      {
+        name: "Влажность",
+        value: `${weatherData?.main?.humidity || 0}%`
+      },
+      {
+        name: "Облачность",
+        value: `${weatherData?.clouds?.all || 0}%`
+      },
+      {
+        name: "Ветер",
+        value: `${Math.floor(weatherData?.wind?.speed || 0)}км/ч`
+      }
+    ]
+    
+    if(weatherData) {
+      let weatherArray = weatherData?.weather || [];
+      let weatherDescription = weatherArray[0]?.description
+      setCurrentWeatherDescription(weatherDescription)
     }
-  ]
+    setWeatherDetailsData(newData)
 
-  const SECTION_BADGE = 'Weather Details:'
-  const CURRENT_WEATHER = 'thunderstorm with light drizzle'
+  }, [weatherData])
+
+
 
   return (
     <section className={cls.sidebar__weatherDetails}>
-      <h3 className={cls.weatherDetails__sectionBadge}>
-        {SECTION_BADGE}
-      </h3>
       <p className={cls.weatherDetails__currentWeather}>
-        {CURRENT_WEATHER}
+        {currentWeatherDescription}
       </p>
       <ul className={cls.weatherDetails__detailsList}>
-        {data.map(({name, value}) => 
+        {WeatherDetailsData.map(({name, value}) => 
         <WeatherDetailsItem 
           key={name}
           name={name} 

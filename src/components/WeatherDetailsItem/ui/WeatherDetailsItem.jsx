@@ -1,16 +1,16 @@
 import cls from "./WeatherDetailsItem.module.css"
 import tempMin from "../assets/Min.png"
 import tempMax from "../assets/Max.png"
-import humadity from "../assets/Humadity.png"
+import humidity from "../assets/Humadity.png"
 import cloudy from "../assets/Cloudy.png"
 import wind from "../assets/Wind.png"
 
 const images = {
-  'Temp min': tempMin,
-  'Temp max': tempMax,
-  "Humadity": humadity,
-  "Cloudy": cloudy,
-  "Wind": wind,
+  'Минимальная температура': tempMin,
+  'Максимальная температура': tempMax,
+  "Влажность": humidity,
+  "Облачность": cloudy,
+  "Ветер": wind,
 }
 
 export function WeatherDetailsItem(data) {

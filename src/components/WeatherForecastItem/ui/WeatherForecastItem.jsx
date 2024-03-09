@@ -1,5 +1,4 @@
 import cls from "./WeatherForecastItem.module.css"
-import snow from "../assets/Snow.png"
 
 export function WeatherForecastItem(data) {
 
@@ -7,13 +6,14 @@ export function WeatherForecastItem(data) {
     time,
     weather,
     value,
+    image,
   } = data
 
   return (
     <li className={cls.forecastList__item}>
     <div className={cls.item__leftSide_container}>
       <img 
-        src={snow} 
+        src={image} 
         alt='weather icon' 
         className={cls.item__img}
       />
@@ -27,7 +27,7 @@ export function WeatherForecastItem(data) {
       </div>
     </div>
     <p className={cls.item__value}>
-      {value}
+      {value}°
     </p>
   </li>
   );

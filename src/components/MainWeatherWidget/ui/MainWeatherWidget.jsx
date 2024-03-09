@@ -1,19 +1,37 @@
+import { useEffect, useState } from 'react'
+import { getCurrentDate, getCurrentTime } from '../../../helpers'
 import cls from './MainWeatherWidget.module.css'
 
-export function MainWeatherWidget() {
+
+
+export function MainWeatherWidget({weatherData}) {
+  const [offset, setOffset] = useState(0)
+  const [currentDate, setCurrentDate] = useState('')
+  const [currentTime, setCurrentTime] = useState('')
+
+  useEffect(()=>{
+    setOffset(weatherData?.timezone)
+    setCurrentDate(getCurrentDate(offset))
+    let timer = setInterval(()=>{
+      setCurrentTime(getCurrentTime(offset))
+    }, 1000)
+    return ()=>{
+      clearInterval(timer)
+    }
+  }, [weatherData, offset])
+
   return (
     <div className={cls.mainScreen__mainInfo}>
     <h1 className={cls.mainInfo__weather}>
-      {16}°
+      {Math.floor(weatherData?.main?.temp)}°
     </h1>
     <div className={cls.mainInfo__cityInfo}>
       <h2 className={cls.cityInfo__cityName}>
-        London
+        {weatherData?.name}
       </h2>
       <p className={cls.cityInfo__cityDate}>
-       06:09 - Monday, 9 Sep
+      {currentTime} - {currentDate}
       </p>
-      <span className={cls.cityInfo__weatherImg}></span>
     </div>
    </div>
   );

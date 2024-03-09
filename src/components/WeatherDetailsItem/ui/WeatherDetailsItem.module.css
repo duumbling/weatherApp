@@ -1,5 +1,4 @@
 * {
-  font-family: Roboto;
   color: #fff;
   box-sizing: border-box;
 }
@@ -22,7 +21,7 @@
 .item__info {
   display: flex;
   justify-content: space-between;
-  width: 270px;
+  width: 23rem;
 }
 
 .info__value {

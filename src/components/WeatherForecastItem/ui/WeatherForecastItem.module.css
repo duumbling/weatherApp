@@ -1,6 +1,5 @@
 * {
   color: #fff;
-  font-family: Roboto;
 }
 
 .forecastList__item {
@@ -8,15 +7,21 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  height: 70px;
+  /* height: 70px; */
+  border-bottom: 1px solid #ffffff34;
+  padding-bottom: 10px;
 }
 
 .item__leftSide_container {
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 10px;
 }
 
+.item__img {
+  height: 45px;
+  width: 50px;
+}
 
 .item__info {
   height: 100%;
