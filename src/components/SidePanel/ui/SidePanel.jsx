@@ -1,29 +1,19 @@
+import { useSelector } from 'react-redux';
 import { Search } from '../../Search';
 import { WeatherDetails } from '../../WeatherDetails';
 import { WeatherForecast } from '../../WeatherForecast';
 import cls from "./SidePanel.module.css"
 
-export function SidePanel(props) {
+export function SidePanel() {
 
-  const {
-    isError,
-    setIsError,
-    weatherData,
-    setWeatherData,
-    forecastData,
-    setForecastData
-  } = props;
-  
+  const weatherData = useSelector((state) => state.currentWeather.value)
+  const forecastData = useSelector((state) => state.forecast.value)
+
   return (
     <aside className={cls.mainScreen__sidebar}>
-      <Search 
-        setWeatherData={setWeatherData}
-        setForecastData={setForecastData}
-        isError={isError}
-        setIsError={setIsError}
-      />
-      {weatherData && <WeatherDetails weatherData={weatherData} />}
-      {forecastData && <WeatherForecast forecastData={forecastData} />}
+      <Search/>
+      {weatherData && <WeatherDetails/>}
+      {forecastData && <WeatherForecast/>}
    </aside>
   );
 }

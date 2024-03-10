@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import { getCurrentDate, getCurrentTime } from '../../../helpers'
 import cls from './MainWeatherWidget.module.css'
+import { useSelector } from 'react-redux'
 
 
 
-export function MainWeatherWidget({weatherData}) {
+export function MainWeatherWidget() {
+  let weatherData = useSelector((state) => state.currentWeather.value)
+
   const [offset, setOffset] = useState(0)
   const [currentDate, setCurrentDate] = useState('')
   const [currentTime, setCurrentTime] = useState('')

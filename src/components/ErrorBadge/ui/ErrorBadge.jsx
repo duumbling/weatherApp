@@ -1,15 +1,19 @@
+import { useSelector } from 'react-redux';
 import cls from "./ErrorBadge.module.css"
 
-export function ErrorBadge({errorText, visible}) {
+export function ErrorBadge() {
 
-  let x = visible ?
+  const isError = useSelector((state) => state.isError.value)
+  const badgeText = 'Введите, пожалуйста, правильное название города'
+
+  let badgeCls = isError ?
    `${cls.errorBadge__container} ${cls.visible}` :
     `${cls.errorBadge__container}`;
-    
+
   return (
-    <div className={x}>
+    <div className={badgeCls}>
     <p className={cls.errorBadge__text}>
-      {errorText}
+      {badgeText}
     </p>
   </div>
   

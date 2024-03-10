@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { WeatherDetailsItem } from '../../WeatherDetailsItem';
 import cls from "./WeatherDetails.module.css"
+import { useSelector } from 'react-redux';
 
-export function WeatherDetails({weatherData}) {
+export function WeatherDetails() {
+  const weatherData = useSelector((state) => state.currentWeather.value)
 
   const [WeatherDetailsData, setWeatherDetailsData] = useState([])
   const [currentWeatherDescription, setCurrentWeatherDescription] = useState('')

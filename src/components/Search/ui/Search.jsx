@@ -1,28 +1,28 @@
 import cls from "./Search.module.css"
 import { GetCurrentWeather, getForecastWeather } from '../../../api/CurrentWeather';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTrue, setFalse } from '../../../store/slices/isErrorSlice'
+import { setCurrentWeather } from '../../../store/slices/currentWeatherSlice';
+import { setForecast } from '../../../store/slices/forecastSlice';
 
-export function Search(props) {
-
-  const {
-    setWeatherData,
-    setForecastData,
-    setIsError,
-    isError
-  } = props
+export function Search() {
+  
+  const dispatch = useDispatch()
+  const isError = useSelector((state) => state.isError.value)
 
   const [city, setCity] = useState('')
   
   const getdata = async () => {
     let answerStatus = await getForecastWeather(city)
     if(answerStatus.cod != 400){
-      setIsError(false)
-      setWeatherData(await GetCurrentWeather(city))
-      setForecastData(await getForecastWeather(city))
+      dispatch(setFalse())
+      dispatch(setCurrentWeather(await GetCurrentWeather(city)))
+      dispatch(setForecast(await getForecastWeather(city)))
     }else{
-      setIsError(true)
+      dispatch(setTrue())
       setTimeout(()=>{
-        setIsError(false)
+        dispatch(setFalse())
       }, 3000)
     }
   }
@@ -44,7 +44,7 @@ export function Search(props) {
       onChange={inputHandler}
       value={city}
     />
-      
+    
     <button 
     className={cls.searchButton}
     onClick={getdata}
