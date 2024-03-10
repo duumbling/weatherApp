@@ -23,15 +23,18 @@ export function MainWeatherWidget({weatherData}) {
   return (
     <div className={cls.mainScreen__mainInfo}>
     <h1 className={cls.mainInfo__weather}>
-      {Math.floor(weatherData?.main?.temp)}°
+      {offset && `${Math.floor(weatherData?.main?.temp)}°`}
     </h1>
     <div className={cls.mainInfo__cityInfo}>
       <h2 className={cls.cityInfo__cityName}>
-        {weatherData?.name}
+        {offset && weatherData?.name}
       </h2>
+      {
+      offset && 
       <p className={cls.cityInfo__cityDate}>
-      {currentTime} - {currentDate}
+      {currentTime || ''} - {currentDate}
       </p>
+      }
     </div>
    </div>
   );
