@@ -6,14 +6,12 @@ async function GetCityLocation(city) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    // console.log(data)
     return {
       lat: data[0].lat,
       lon: data[0].lon
     };
   } catch (error) {
-    console.log('Произошла ошибка: ', error);
-    throw error;
+    return error;
   }
 }
 
@@ -27,11 +25,9 @@ export async function GetCurrentWeather(city) {
     const data = await response.json();
 
     // Обработка полученных данных
-    // console.log(data);
     return data
   } catch (error) {
-    console.log('Произошла ошибка: ', error);
-    throw error;
+    return error;
   }
 }
 
@@ -45,11 +41,9 @@ export async function getForecastWeather(city) {
     const data = await response.json();
 
     // Обработка полученных данных
-    // console.log(data);
     return data
   } catch (error) {
-    console.log('Произошла ошибка: ', error);
-    throw error;
+    return error;
   }
   
 }

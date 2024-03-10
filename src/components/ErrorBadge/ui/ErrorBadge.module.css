@@ -1,0 +1,28 @@
+.errorBadge__container {
+  background:  #E32636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  height: min-content;
+  padding: 30px 30px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -100px;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+}
+
+.visible {
+  top: 50px;
+}
+
+.errorBadge__text {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  width: 250px;
+}

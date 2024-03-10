@@ -6,25 +6,40 @@ export function Search(props) {
 
   const {
     setWeatherData,
-    setForecastData
+    setForecastData,
+    setIsError,
+    isError
   } = props
 
   const [city, setCity] = useState('')
   
   const getdata = async () => {
-    setWeatherData(await GetCurrentWeather(city))
-    setForecastData(await getForecastWeather(city))
+    let answerStatus = await getForecastWeather(city)
+    if(answerStatus.cod != 400){
+      setIsError(false)
+      setWeatherData(await GetCurrentWeather(city))
+      setForecastData(await getForecastWeather(city))
+    }else{
+      setIsError(true)
+      setTimeout(()=>{
+        setIsError(false)
+      }, 3000)
+    }
   }
 
   const inputHandler = (e) => {
     setCity(e.target.value)
   }
+  
+  let inputCls = isError ?
+   `${cls.search} ${cls.error}` :
+    `${cls.search}`;
 
   return (
   <section className={cls.sidebar__searchLocation}>
     <input 
       type="text" 
-      className={cls.search} 
+      className={inputCls} 
       placeholder='Search Location..'
       onChange={inputHandler}
       value={city}

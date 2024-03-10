@@ -23,6 +23,11 @@
   color: rgba(255,255,255,.7);
 }
 
+.error {
+  border-bottom: 2px solid #E32636;
+  /* color: #E32636; */
+}
+
 .searchButton{
   background: url("../assets/fa_search.svg") center center no-repeat;
   background-size: contain;

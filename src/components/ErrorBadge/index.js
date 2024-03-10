@@ -1,0 +1,1 @@
+export { ErrorBadge } from "./ui/ErrorBadge"
