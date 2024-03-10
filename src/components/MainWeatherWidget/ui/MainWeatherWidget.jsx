@@ -12,6 +12,7 @@ export function MainWeatherWidget({weatherData}) {
   useEffect(()=>{
     setOffset(weatherData?.timezone)
     setCurrentDate(getCurrentDate(offset))
+    setCurrentTime(getCurrentTime(offset))
     let timer = setInterval(()=>{
       setCurrentTime(getCurrentTime(offset))
     }, 1000)
