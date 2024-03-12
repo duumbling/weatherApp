@@ -74,12 +74,13 @@
     display: flex;
     gap: 0;
     position: absolute;
-    top: 220px;
+    top: 180px;
   }
 }
 
 /*0 - 520*/
 @media (max-width: 520px)  {
+
   .mainInfo__weather{
     font-size: 70px;
     line-height: 60px;
