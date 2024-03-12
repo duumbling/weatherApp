@@ -1,5 +1,5 @@
 import cls from "./Search.module.css"
-import { GetCurrentWeather, getForecastWeather } from '../../../api/CurrentWeather';
+import { getCurrentWeather, getForecastWeather } from '../../../api/WeatherAPI';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTrue, setFalse } from '../../../store/slices/isErrorSlice'
@@ -17,7 +17,8 @@ export function Search() {
     let answerStatus = await getForecastWeather(city)
     if(answerStatus.cod != 400){
       dispatch(setFalse())
-      dispatch(setCurrentWeather(await GetCurrentWeather(city)))
+      setCity('')
+      dispatch(setCurrentWeather(await getCurrentWeather(city)))
       dispatch(setForecast(await getForecastWeather(city)))
     }else{
       dispatch(setTrue())
@@ -30,6 +31,12 @@ export function Search() {
   const inputHandler = (e) => {
     setCity(e.target.value)
   }
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      getdata()
+    }
+  };
   
   let inputCls = isError ?
    `${cls.search} ${cls.error}` :
@@ -42,6 +49,7 @@ export function Search() {
       className={inputCls} 
       placeholder='Search Location..'
       onChange={inputHandler}
+      onKeyDown={handleKeyDown}
       value={city}
     />
     
