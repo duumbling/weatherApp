@@ -14,7 +14,6 @@
 }
 
 .cityInfo__cityName{
-  color: #FFF;
   font-size: 60px;
   font-style: normal;
   font-weight: 400;
@@ -22,10 +21,76 @@
 }
 
 .cityInfo__cityDate{
-  color: #FFF;
-  font-family: Roboto;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+
+/*991 - 1440*/
+@media (max-width: 1440px)  {
+  .mainScreen__mainInfo{
+    display: flex;
+    gap: 10px;
+    margin-left: 66px;
+  }
+  
+  .mainInfo__weather{
+    font-size: 120px;
+  }
+  
+  .cityInfo__cityName{
+    font-size: 50px;
+  }
+}
+
+/*768 - 991*/
+@media (max-width: 991px)  {
+  .mainScreen__mainInfo{
+    display: flex;
+    gap: 0;
+    margin-left: 46px;
+  }
+  
+  .mainInfo__weather{
+    font-size: 100px;
+  }
+  
+  .cityInfo__cityName{
+    font-size: 40px;
+  }
+  
+  .cityInfo__cityDate{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+/*520 - 768*/
+@media (max-width: 768px)  {
+  .mainScreen__mainInfo{
+    display: flex;
+    gap: 0;
+    position: absolute;
+    top: 260px;
+  }
+}
+
+/*0 - 520*/
+@media (max-width: 520px)  {
+  .mainInfo__weather{
+    font-size: 70px;
+    line-height: 60px;
+  }
+  
+  .cityInfo__cityName{
+    font-size: 30px;
+  }
+  
+  .cityInfo__cityDate{
+    font-size: 15px;
+  }
+}
+

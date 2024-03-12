@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: false,
+  value: true,
 }
 
 export const isErrorSlice = createSlice({
@@ -11,7 +11,8 @@ export const isErrorSlice = createSlice({
     setErrorStatusTrue: (state) => {
       state.value = true
     },
-    setsetErrorStatusFalse: (state) => {
+
+    setErrorStatusFalse: (state) => {
       state.value = false
     },
   },

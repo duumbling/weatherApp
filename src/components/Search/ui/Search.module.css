@@ -25,7 +25,6 @@
 
 .error {
   border-bottom: 2px solid #E32636;
-  /* color: #E32636; */
 }
 
 .searchButton{
@@ -39,4 +38,32 @@
   right: 17px;
   bottom: 16px;
   cursor: pointer;
+}
+
+/*0 - 768*/
+@media (max-width: 768px)  {
+  .sidebar__searchLocation{
+    position: absolute;
+    top: 13px;
+    right: 39px;
+    width: 305px;
+  }
+  
+  .search, .search::placeholder{
+    font-size: 18px;
+  }
+  
+  .searchButton{
+    background: url("../assets/fa_search.svg") center center no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 17px;
+    bottom: 16px;
+    cursor: pointer;
+  }
+
 }

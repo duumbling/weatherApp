@@ -20,6 +20,7 @@
   overflow-y: scroll;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
+  transition: all 0.3s ease;
 }
 
 .mainScreen__sidebar::-webkit-scrollbar { 
@@ -52,4 +53,76 @@
   font-weight: 300;
   line-height: normal;
   margin-bottom: 50px;
+}
+
+/*991 - 1440*/
+@media (max-width: 1440px)  {
+  .mainScreen__sidebar{
+    width: 426px;
+    padding: 40px 50px 40px;
+    gap: 70px;
+  }
+  
+}
+
+/*768 - 991*/
+@media (max-width: 991px)  {
+  .mainScreen__sidebar{
+    width: 326px;
+    padding: 40px 50px;
+    gap: 70px;
+  }
+
+  .mainScreen__sidebar > *:not(:first-child) h3 {
+    text-align: center;
+  }
+}
+
+/*520 - 768*/
+@media (max-width: 768px)  {
+  .mainScreen__sidebar{
+    position: fixed;
+    top: 50%;
+    right: 0;
+    width: 100%;
+    height: 50%;
+    padding: 40px 150px 40px;
+    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.41);
+  }
+
+  .mainScreen__sidebar > * {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 86px;
+    position: relative;
+  }
+  
+  .mainScreen__sidebar > *::after {
+    content: '';
+    width: 110%;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+  }
+  
+  .mainScreen__sidebar > * h3 {
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 50px;
+  }
+}
+
+/*0 - 520*/
+@media (max-width: 520px)  {
+  .mainScreen__sidebar{
+    padding: 40px 50px;
+  }
 }

@@ -14,11 +14,11 @@ export function WeatherDetails() {
     let min = Math.min(Math.floor(Number(weatherData?.main?.temp_max)), Math.floor(weatherData?.main?.temp_min))
     const newData = [
       { 
-        name: "Минимальная температура",
+        name: "Мин. температура",
         value: `${min || 0}°`
       },
       {
-        name: "Максимальная температура",
+        name: "Макс. температура",
         value: `${max || 0}°`
       },
       {

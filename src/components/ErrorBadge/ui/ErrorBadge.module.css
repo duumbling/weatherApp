@@ -26,3 +26,11 @@
   text-align: center;
   width: 250px;
 }
+
+/*520 - 768*/
+@media (max-width: 768px)  {
+  .visible {
+    top: 70px;
+  }
+
+}

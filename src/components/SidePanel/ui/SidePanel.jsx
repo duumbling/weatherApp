@@ -8,10 +8,12 @@ export function SidePanel() {
 
   const weatherData = useSelector((state) => state.currentWeather.value)
   const forecastData = useSelector((state) => state.forecast.value)
+  const isWideScreen = useSelector((state) => state.isWideScreen.value)
+
 
   return (
     <aside className={cls.mainScreen__sidebar}>
-      <Search/>
+      {isWideScreen && <Search/>}
       {weatherData && <WeatherDetails/>}
       {forecastData && <WeatherForecast/>}
    </aside>

@@ -6,8 +6,8 @@ import cloudy from "../assets/Cloudy.png"
 import wind from "../assets/Wind.png"
 
 const images = {
-  'Минимальная температура': tempMin,
-  'Максимальная температура': tempMax,
+  'Мин. температура': tempMin,
+  'Макс. температура': tempMax,
   "Влажность": humidity,
   "Облачность": cloudy,
   "Ветер": wind,
