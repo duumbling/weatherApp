@@ -1,6 +1,6 @@
 const API_KEY = import.meta.env.VITE_API_KEY
 
-async function GetCityLocation(city) {
+async function getCityLocation(city) {
   let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${city},ru&limit=50&appid=${API_KEY}`;
 
   try {
@@ -15,10 +15,10 @@ async function GetCityLocation(city) {
   }
 }
 
-export async function GetCurrentWeather(city) {
+export async function getCurrentWeather(city) {
   try {
 
-    let location = await GetCityLocation(city);
+    let location = await getCityLocation(city);
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&lang=ru&units=metric`;
 
     const response = await fetch(url);
@@ -34,7 +34,7 @@ export async function GetCurrentWeather(city) {
 export async function getForecastWeather(city) {
   try {
 
-    let location = await GetCityLocation(city);
+    let location = await getCityLocation(city);
     let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&lang=ru&units=metric&cnt=5`
 
     const response = await fetch(url);
