@@ -1,4 +1,4 @@
-let API_KEY = 'bd06a910ceb13ada14af94da327c4f7e';
+const API_KEY = import.meta.env.VITE_API_KEY
 
 async function GetCityLocation(city) {
   let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${city},ru&limit=50&appid=${API_KEY}`;
