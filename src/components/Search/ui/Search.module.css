@@ -52,18 +52,15 @@
   .search, .search::placeholder{
     font-size: 18px;
   }
-  
-  .searchButton{
-    background: url("../assets/fa_search.svg") center center no-repeat;
-    background-size: contain;
-    width: 20px;
-    height: 20px;
-    border: none;
-    outline: none;
-    position: absolute;
-    right: 17px;
-    bottom: 16px;
-    cursor: pointer;
-  }
+}
 
+/*0 - 520*/
+@media (max-width: 520px)  {
+  .sidebar__searchLocation{
+    position: absolute;
+    top: 13px;
+    /* right: auto; */
+    left: calc(50% - 152px);
+    width: 305px;
+  }
 }

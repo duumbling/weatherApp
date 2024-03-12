@@ -22,7 +22,7 @@
   background-size: cover;
   font-family: Roboto;
   color: #FFF;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: flex-end;
 }
