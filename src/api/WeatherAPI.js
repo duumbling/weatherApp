@@ -15,11 +15,17 @@ async function getCityLocation(city) {
   }
 }
 
-export async function getCurrentWeather(city) {
+export async function getCurrentWeather(city = null, lat = null, lon = null) {
   try {
 
     let location = await getCityLocation(city);
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&lang=ru&units=metric`;
+
+    if(city){
+      lat = location.lat;
+      lon = location.lon;
+    }
+    
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=ru&units=metric`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -31,12 +37,16 @@ export async function getCurrentWeather(city) {
   }
 }
 
-export async function getForecastWeather(city) {
+export async function getForecastWeather(city = null, lat = null, lon = null) {
   try {
-
     let location = await getCityLocation(city);
-    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&lang=ru&units=metric&cnt=5`
 
+    if(city){
+      lat = location.lat;
+      lon = location.lon;
+    }
+
+    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=ru&units=metric&cnt=5`
     const response = await fetch(url);
     const data = await response.json();
 

@@ -8,15 +8,15 @@ export const isErrorSlice = createSlice({
   name: 'isError',
   initialState,
   reducers: {
-    setTrue: (state) => {
+    setErrorStatusTrue: (state) => {
       state.value = true
     },
-    setFalse: (state) => {
+    setsetErrorStatusFalse: (state) => {
       state.value = false
     },
   },
 })
 
-export const { setTrue, setFalse } = isErrorSlice.actions
+export const { setErrorStatusTrue, setErrorStatusFalse } = isErrorSlice.actions
 
 export default isErrorSlice.reducer

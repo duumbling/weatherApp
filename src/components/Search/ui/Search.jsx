@@ -1,10 +1,11 @@
 import cls from "./Search.module.css"
 import { getCurrentWeather, getForecastWeather } from '../../../api/WeatherAPI';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTrue, setFalse } from '../../../store/slices/isErrorSlice'
+import { setErrorStatusTrue, setErrorStatusFalse } from '../../../store/slices/isErrorSlice'
 import { setCurrentWeather } from '../../../store/slices/currentWeatherSlice';
 import { setForecast } from '../../../store/slices/forecastSlice';
+import { getUserLocation } from '../../../helpers/getUserLocation';
 
 export function Search() {
   
@@ -12,18 +13,29 @@ export function Search() {
   const isError = useSelector((state) => state.isError.value)
 
   const [city, setCity] = useState('')
-  
+
+
+  useEffect(() => {
+    setUserLocationWeather()
+  }, [])
+
+  async function setUserLocationWeather(){
+    let { lat, lon } = await getUserLocation();
+    dispatch(setCurrentWeather(await getCurrentWeather('', lat, lon)))
+    dispatch(setForecast(await getForecastWeather('', lat, lon)))
+  }
+
   const getdata = async () => {
     let answerStatus = await getForecastWeather(city)
     if(answerStatus.cod != 400){
-      dispatch(setFalse())
       setCity('')
+      dispatch(setErrorStatusFalse())
       dispatch(setCurrentWeather(await getCurrentWeather(city)))
       dispatch(setForecast(await getForecastWeather(city)))
     }else{
-      dispatch(setTrue())
+      dispatch(setErrorStatusTrue())
       setTimeout(()=>{
-        dispatch(setFalse())
+        dispatch(setErrorStatusFalse())
       }, 3000)
     }
   }
