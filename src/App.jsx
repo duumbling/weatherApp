@@ -32,7 +32,7 @@ function App() {
       window.removeEventListener('resize', handleResize);
     };
 
-  }, []);
+  });
 
   async function setUserLocationWeather(){
     let { lat, lon } = await getUserLocation()

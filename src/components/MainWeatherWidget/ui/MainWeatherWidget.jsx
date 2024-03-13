@@ -6,14 +6,16 @@ import { useSelector } from 'react-redux'
 
 
 export function MainWeatherWidget() {
-  let weatherData = useSelector((state) => state.currentWeather.value)
+  // let weatherData = useSelector((state) => state.currentWeather.value)
+  let {cityName, data} = useSelector((state) => state.currentWeather.value)
+  console.log(cityName, data)
 
   const [offset, setOffset] = useState(0)
   const [currentDate, setCurrentDate] = useState('')
   const [currentTime, setCurrentTime] = useState('')
 
   useEffect(()=>{
-    setOffset(weatherData?.timezone)
+    setOffset(data?.timezone)
     setCurrentDate(getCurrentDate(offset))
     setCurrentTime(getCurrentTime(offset))
     let timer = setInterval(()=>{
@@ -22,16 +24,16 @@ export function MainWeatherWidget() {
     return ()=>{
       clearInterval(timer)
     }
-  }, [weatherData, offset])
+  }, [data, offset])
 
   return (
     <div className={cls.mainScreen__mainInfo}>
     <h1 className={cls.mainInfo__weather}>
-      {offset && `${Math.floor(weatherData?.main?.temp)}°`}
+      {offset && `${Math.floor(data?.main?.temp)}°`}
     </h1>
     <div className={cls.mainInfo__cityInfo}>
       <h2 className={cls.cityInfo__cityName}>
-        {offset && weatherData?.name}
+        {offset && cityName || data?.name}
       </h2>
       {
       offset && 
